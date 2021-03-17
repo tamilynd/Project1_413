@@ -13,19 +13,24 @@ namespace Project1_413.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
+        public List<string> = 
+
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
+
 
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult SignUp()
+        public IActionResult SignUp(Models.SignUpViewModel SignUpInfo )
         {
-            return View();
+            SignUpInfo.Get
+
+            return View(SignUpInfo);
         }
         
          //Pass in time/date from SignUp page & set it equal to time/date on SignUpForm page
