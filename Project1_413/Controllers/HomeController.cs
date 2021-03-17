@@ -11,13 +11,11 @@ namespace Project1_413.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private AppointmentListContext context { get; set; }
 
-        public List<string> = 
-
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(AppointmentListContext con)
         {
-            _logger = logger;
+              context = con;
         }
 
 
@@ -26,22 +24,36 @@ namespace Project1_413.Controllers
             return View();
         }
 
-        public IActionResult SignUp(Models.SignUpViewModel SignUpInfo )
+        //Pull up sign up page
+        [HttpGet]
+        public IActionResult SignUp()
         {
-            SignUpInfo.Get
 
-            return View(SignUpInfo);
+            return View();
         }
-        
-         //Pass in time/date from SignUp page & set it equal to time/date on SignUpForm page
-        public IActionResult SignUpForm(SignUpForm form, SignUpModel times)
+
+
+        [HttpPost]
+        public IActionResult SignUp(SignUpFormViewModel form)
         {
-            //how to set parameters of signupform = to info coming from index page
-            form.StartTime = times.StartTime;
-            form.EndTime = times.EndTime;
-            form.Date = times.Date;
+
+            return View("SignUpForm", form);
+        }
+
+
+        public IActionResult SubmitForm(Appointment appointment)
+        {
+            //add to database
+            context.Appointments.Add(appointment);
+            context.SaveChanges();
 
             return View("Index");
+        }
+
+
+        public IActionResult ViewAppointments()
+        {
+            return View(_repository.Appointments);
         }
 
         public IActionResult Privacy()
