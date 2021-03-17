@@ -23,6 +23,22 @@ namespace Project1_413.Controllers
             return View();
         }
 
+        public IActionResult SignUp()
+        {
+            return View();
+        }
+        
+         //Pass in time/date from SignUp page & set it equal to time/date on SignUpForm page
+        public IActionResult SignUpForm(SignUpForm form, SignUpModel times)
+        {
+            //how to set parameters of signupform = to info coming from index page
+            form.StartTime = times.StartTime;
+            form.EndTime = times.EndTime;
+            form.Date = times.Date;
+
+            return View("Index");
+        }
+
         public IActionResult Privacy()
         {
             return View();
