@@ -4,3 +4,34 @@
 @{
 }
 <!--Tam's View-->
+
+<div>
+    <h2>Group Info</h2>
+    <div>
+        <form asp-action="SignUpForm" method="post">
+
+            <h5>Reservation Information</h5>
+            <label asp-for="Date">Day of the Week</label>
+            <input asp-for="Date" disabled value="@Model.Date" />
+            <label asp-for="StartTime">Start Time</label>
+            <input asp-for="StartTime" disabled value="@Model.time.StartTime" />
+            <label asp-for="EndTime">Finish Time</label>
+            <input asp-for="EndTime" disabled value="@Model.time.FinishTime" />
+            <br />
+
+            <h5>Group Information</h5>
+            <label asp-for="GroupName">Name of Group:</label>
+            <input asp-for="GroupName" />
+            <label asp-for="GroupSize">Size of Group:</label>
+            <input asp-for="GroupSize" />
+            <br />
+
+            <h5>Contact Information</h5>
+            <label asp-for="EmailAddress">Email Address:</label>
+            <input asp-for="EmailAddress" />
+            <label asp-for="PhoneNumber">Phone Number (optional):</label>
+            <input asp-for="PhoneNumber" />
+            <button type="submit">Make Reservation</button>
+        </form>
+    </div>
+</div>
