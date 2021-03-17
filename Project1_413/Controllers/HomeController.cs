@@ -13,14 +13,35 @@ namespace Project1_413.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
+        public List<string> = 
+
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
 
+
         public IActionResult Index()
         {
             return View();
+        }
+
+        public IActionResult SignUp(Models.SignUpViewModel SignUpInfo )
+        {
+            SignUpInfo.Get
+
+            return View(SignUpInfo);
+        }
+        
+         //Pass in time/date from SignUp page & set it equal to time/date on SignUpForm page
+        public IActionResult SignUpForm(SignUpForm form, SignUpModel times)
+        {
+            //how to set parameters of signupform = to info coming from index page
+            form.StartTime = times.StartTime;
+            form.EndTime = times.EndTime;
+            form.Date = times.Date;
+
+            return View("Index");
         }
 
         public IActionResult Privacy()
