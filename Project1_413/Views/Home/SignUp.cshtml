@@ -31,7 +31,7 @@
                                     @x.EndTime
                                 </td>
                                 <td>
-                                    <form asp-action="SignUpForm" method="post">
+                                    <form asp-action="SignUp" method="post">
                                         <input hidden value="@x.StartTime" asp-for="StartTime" />
                                         <input hidden value="@x.EndTime" asp-for="EndTime" />
                                         <input hidden value="@day" asp-for="Day" />
