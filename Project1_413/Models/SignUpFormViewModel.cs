@@ -15,7 +15,7 @@ namespace Project1_413.Models
         public string StartTime { get; set; }
 
         //Holds reservation end time
-        public string EndTimeoutException { get; set; }
+        public string EndTime { get; set; }
 
 
     }

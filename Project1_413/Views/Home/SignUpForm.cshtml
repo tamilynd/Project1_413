@@ -1,4 +1,4 @@
-﻿
+﻿@model SignUpFormViewModel;
 <!--Tam's View-->
 
 <div>
@@ -9,11 +9,11 @@
             <!--Part of form not to be edited-->
             <h5>Reservation Information</h5>
             <label asp-for="Date">Day of the Week</label>
-            <input asp-for="Date" disabled value="@Model.Date" />
+            <input asp-for="Date" disabled value="@Model.Day" />
             <label asp-for="StartTime">Start Time</label>
-            <input asp-for="StartTime" disabled value="@Model.time.StartTime" />
+            <input asp-for="StartTime" disabled value="@Model.StartTime" />
             <label asp-for="EndTime">Finish Time</label>
-            <input asp-for="EndTime" disabled value="@Model.time.FinishTime" />
+            <input asp-for="EndTime" disabled value="@Model.EndTime" />
             <br />
 
 
