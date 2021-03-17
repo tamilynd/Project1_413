@@ -1,0 +1,49 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+}
+
+<!--Tam's View-->
+<div>
+    <h2>Select a Time Slot:</h2>
+    <div class="row">
+        @foreach (var day in Model.days) 
+        {
+            <div class="col-1">
+                <h3>Sunday</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Start Time</td>
+                            <td>End Time</td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var x in Model.times)
+                        {
+                            <tr>
+                                <td>
+                                    @x.StartTime
+                                </td>
+                                <td>
+                                    @x.EndTime
+                                </td>
+                                <td>
+                                    <form asp-action="SignUpForm" method="post">
+                                        <input hidden value="@x.StartTime" asp-for="StartTime" />
+                                        <input hidden value="@x.EndTime" asp-for="EndTime" />
+                                        <input hidden value="@day" asp-for="Day" />
+                                        <button type="submit">Reserve</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</div>
