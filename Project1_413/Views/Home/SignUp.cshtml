@@ -4,7 +4,9 @@
 
 @{
     List<string> days = SignUpViewModel.GetDays();
-    List<Dictionary<string, string>> times = SignUpViewModel.GetTimes();
+    List<string> start = SignUpViewModel.GetStartTimes();
+    List<string> finish = SignUpViewModel.GetFinishTimes();
+
 }
 
 
@@ -12,9 +14,9 @@
     <h2>Select a Time Slot:</h2>
     <div class="row">
 
-        @foreach (string day in days)
+        @foreach (var day in days)
         {
-            <div class="col-1">
+            <div class="col-2">
                 <h3>@day</h3>
                 <table>
                     <thead>
@@ -25,20 +27,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (Dictionary<string, string> x in times)
+                        @for (int i = 0; i < start.Count; i++)
                         {
                             <tr>
                                 <td>
-                                    @x["start"]
+                                    @start[i]
                                 </td>
                                 <td>
-                                    @x["finish"]
+                                    @finish[i]
                                 </td>
                                 <td>
-                                    <form asp-action="SignUp" method="post">
-                                        <input hidden value="@x["start"]" asp-for="StartTime" />
-                                        <input hidden value="@x["finish"]" asp-for="EndTime" />
-                                        <input hidden value="@day" asp-for="Day" />
+                                    <form method="post">
+                                        <input hidden type="text" value="@start[i]" id="StartTime" name="StartTime" />
+                                        <input hidden value="@finish[i]" id="EndTime" name="EndTime" />
+                                        <input hidden value="@day" id="Day" name="Day" />
                                         <button type="submit">Reserve</button>
                                     </form>
                                 </td>

@@ -9,13 +9,12 @@ namespace Project1_413.Models
     public class SignUpViewModel
     {
         //Function to get the days in a list for the view
-        public static List<String> GetDays() 
+        public static List<String> GetDays()
         {
             //Create string array
             List<String> days = new List<string>();
 
             //Add days to the string
-            days.Add("Sunday");
             days.Add("Monday");
             days.Add("Tuesday");
             days.Add("Wednesday");
@@ -27,67 +26,50 @@ namespace Project1_413.Models
         }
 
         //Function to get the times in a list of dictionaries for the view
-        public static List<Dictionary<string, string>> GetTimes()
+        public static List<string> GetStartTimes()
         {
-           //declare list to hold time dictionaries
-            List<Dictionary<string, string>> times = new List<Dictionary<string, string>>();
+            //declare list to hold time dictionaries
+            List<string> StartTimes = new List<string>();
+            StartTimes.Add("8:00 am");
+            StartTimes.Add("9:00 am");
+            StartTimes.Add("10:00 am");
+            StartTimes.Add("11:00 am");
+            StartTimes.Add("12:00 pm");
+            StartTimes.Add("1:00 pm");
+            StartTimes.Add("2:00 pm");
+            StartTimes.Add("3:00 pm");
+            StartTimes.Add("4:00 pm");
+            StartTimes.Add("5:00 pm");
+            StartTimes.Add("6:00 pm");
+            StartTimes.Add("7:00 pm");
+            StartTimes.Add("8:00 pm");
 
-            //add time dictionaries to the list
-            Dictionary<string, string> Time = new Dictionary<string, string>();
-            Time.Add("start", "8:00 am");
-            Time.Add("finish", "9:00 am");
-            times.Add(Time);
 
-            Time.Add("start", "9:00 am");
-            Time.Add("finish", "10:00 am");
-            times.Add(Time);
 
-            Time.Add("start", "10:00 am");
-            Time.Add("finish", "11:00 am");
-            times.Add(Time);
-
-            Time.Add("start", "11:00 am");
-            Time.Add("finish", "12:00 pm");
-            times.Add(Time);
-
-            Time.Add("start", "12:00 pm");
-            Time.Add("finish", "1:00 pm");
-            times.Add(Time);
-
-            Time.Add("start", "1:00 pm");
-            Time.Add("finish", "2:00 pm");
-            times.Add(Time);
-
-            Time.Add("start", "2:00 pm");
-            Time.Add("finish", "3:00 pm");
-            times.Add(Time);
-
-            Time.Add("start", "3:00 pm");
-            Time.Add("finish", "4:00 pm");
-            times.Add(Time);
-
-            Time.Add("start", "4:00 pm");
-            Time.Add("finish", "5:00 pm");
-            times.Add(Time);
-
-            Time.Add("start", "5:00 pm");
-            Time.Add("finish", "6:00 pm");
-            times.Add(Time);
-
-            Time.Add("start", "6:00 pm");
-            Time.Add("finish", "7:00 pm");
-            times.Add(Time);
-
-            Time.Add("start", "7:00 pm");
-            Time.Add("finish", "8:00 pm");
-            times.Add(Time);
-
-            Time.Add("start", "8:00 pm");
-            Time.Add("finish", "9:00 pm");
-            times.Add(Time);
-
-            return times;
+            return StartTimes;
         }
-        
+
+        public static List<string> GetFinishTimes()
+        {
+            //declare list to hold time dictionaries
+            List<string> FinishTimes = new List<string>();
+            FinishTimes.Add("9:00 am");
+            FinishTimes.Add("10:00 am");
+            FinishTimes.Add("11:00 am");
+            FinishTimes.Add("12:00 pm");
+            FinishTimes.Add("1:00 pm");
+            FinishTimes.Add("2:00 pm");
+            FinishTimes.Add("3:00 pm");
+            FinishTimes.Add("4:00 pm");
+            FinishTimes.Add("5:00 pm");
+            FinishTimes.Add("6:00 pm");
+            FinishTimes.Add("7:00 pm");
+            FinishTimes.Add("8:00 pm");
+            FinishTimes.Add("9:00 pm");
+
+
+
+            return FinishTimes;
+        }
     }
 }

@@ -30,36 +30,36 @@
     }
 
     function splitAndTrim(value) {
-        return value.replace(/^\s+|\s+$/g] = "".split(/\s*,\s*/g);
+        return value.replace(/^\s+|\s+$/g, "").split(/\s*,\s*/g);
     }
 
     function escapeAttributeValue(value) {
         // As mentioned on http://api.jquery.com/category/selectors/
-        return value.replace(/([!"#$%&'()*+,./:;<=>?@\[\\\]^`{|}~])/g] = "\\$1";
+        return value.replace(/([!"#$%&'()*+,./:;<=>?@\[\\\]^`{|}~])/g, "\\$1");
     }
 
     function getModelPrefix(fieldName) {
-        return fieldName.substr(0, fieldName.lastIndexOf("." + 1);
+        return fieldName.substr(0, fieldName.lastIndexOf(".") + 1);
     }
 
     function appendModelPrefix(value, prefix) {
-        if (value.indexOf("*." === 0) {
+        if (value.indexOf("*.") === 0) {
             value = value.replace("*.", prefix);
         }
         return value;
     }
 
     function onError(error, inputElement) {  // 'this' is the form element
-        var container = $(this).find("[data-valmsg-for='" + escapeAttributeValue(inputElement[0].name) + "']",
-            replaceAttrValue = container.attr("data-valmsg-replace",
+        var container = $(this).find("[data-valmsg-for='" + escapeAttributeValue(inputElement[0].name) + "']"),
+            replaceAttrValue = container.attr("data-valmsg-replace"),
             replace = replaceAttrValue ? $.parseJSON(replaceAttrValue) !== false : null;
 
-        container.removeClass("field-validation-valid".addClass("field-validation-error";
+        container.removeClass("field-validation-valid").addClass("field-validation-error");
         error.data("unobtrusiveContainer", container);
 
         if (replace) {
             container.empty();
-            error.removeClass("input-validation-error".appendTo(container);
+            error.removeClass("input-validation-error").appendTo(container);
         }
         else {
             error.hide();
@@ -67,28 +67,28 @@
     }
 
     function onErrors(event, validator) {  // 'this' is the form element
-        var container = $(this).find("[data-valmsg-summary=true]",
-            list = container.find("ul";
+        var container = $(this).find("[data-valmsg-summary=true]"),
+            list = container.find("ul");
 
         if (list && list.length && validator.errorList.length) {
             list.empty();
-            container.addClass("validation-summary-errors".removeClass("validation-summary-valid";
+            container.addClass("validation-summary-errors").removeClass("validation-summary-valid");
 
             $.each(validator.errorList, function () {
-                $("<li />".html(this.message).appendTo(list);
+                $("<li />").html(this.message).appendTo(list);
             });
         }
     }
 
     function onSuccess(error) {  // 'this' is the form element
-        var container = error.data("unobtrusiveContainer";
+        var container = error.data("unobtrusiveContainer");
 
         if (container) {
-            var replaceAttrValue = container.attr("data-valmsg-replace",
+            var replaceAttrValue = container.attr("data-valmsg-replace"),
                 replace = replaceAttrValue ? $.parseJSON(replaceAttrValue) : null;
 
-            container.addClass("field-validation-valid".removeClass("field-validation-error";
-            error.removeData("unobtrusiveContainer";
+            container.addClass("field-validation-valid").removeClass("field-validation-error");
+            error.removeData("unobtrusiveContainer");
 
             if (replace) {
                 container.empty();
@@ -105,20 +105,20 @@
         // Set a flag that indicates we're currently resetting the form.
         $form.data(key, true);
         try {
-            $form.data("validator".resetForm();
+            $form.data("validator").resetForm();
         } finally {
             $form.removeData(key);
         }
 
-        $form.find(".validation-summary-errors"
-            .addClass("validation-summary-valid"
-            .removeClass("validation-summary-errors";
-        $form.find(".field-validation-error"
-            .addClass("field-validation-valid"
-            .removeClass("field-validation-error"
-            .removeData("unobtrusiveContainer"
-            .find(">*"  // If we were using valmsg-replace, get the underlying error
-            .removeData("unobtrusiveContainer";
+        $form.find(".validation-summary-errors")
+            .addClass("validation-summary-valid")
+            .removeClass("validation-summary-errors");
+        $form.find(".field-validation-error")
+            .addClass("field-validation-valid")
+            .removeClass("field-validation-error")
+            .removeData("unobtrusiveContainer")
+            .find(">*")  // If we were using valmsg-replace, get the underlying error
+            .removeData("unobtrusiveContainer");
     }
 
     function validationInfo(form) {
@@ -181,7 +181,7 @@
             /// If parsing several elements, you should specify false, and manually attach the validation
             /// to the form when you are finished. The default is false.</param>
             var $element = $(element),
-                form = $element.parents("form"[0],
+                form = $element.parents("form")[0],
                 valInfo, rules, messages;
 
             if (!form) {  // Cannot do client-side validation without a form
@@ -235,11 +235,11 @@
             var $selector = $(selector),
                 $forms = $selector.parents()
                     .addBack()
-                    .filter("form"
-                    .add($selector.find("form")
-                    .has("[data-val=true]";
+                    .filter("form")
+                    .add($selector.find("form"))
+                    .has("[data-val=true]");
 
-            $selector.find("[data-val=true]".each(function () {
+            $selector.find("[data-val=true]").each(function () {
                 $jQval.unobtrusive.parseElement(this, true);
             });
 
@@ -357,34 +357,34 @@
     });
 
     if ($jQval.methods.extension) {
-        adapters.addSingleVal("accept"] = "mimtype";
-        adapters.addSingleVal("extension"] = "extension";
+        adapters.addSingleVal("accept", "mimtype");
+        adapters.addSingleVal("extension", "extension");
     } else {
         // for backward compatibility, when the 'extension' validation method does not exist, such as with versions
         // of JQuery Validation plugin prior to 1.10, we should use the 'accept' method for
         // validating the extension, and ignore mime-type validations as they are not supported.
-        adapters.addSingleVal("extension"] = "extension"] = "accept";
+        adapters.addSingleVal("extension", "extension", "accept");
     }
 
-    adapters.addSingleVal("regex"] = "pattern";
-    adapters.addBool("creditcard".addBool("date".addBool("digits".addBool("email".addBool("number".addBool("url";
-    adapters.addMinMax("length"] = "minlength"] = "maxlength"] = "rangelength".addMinMax("range"] = "min"] = "max"] = "range";
-    adapters.addMinMax("minlength"] = "minlength".addMinMax("maxlength"] = "minlength"] = "maxlength";
-    adapters["equalto", ["other"], function (options) {
+    adapters.addSingleVal("regex", "pattern");
+    adapters.addBool("creditcard").addBool("date").addBool("digits").addBool("email").addBool("number").addBool("url");
+    adapters.addMinMax("length", "minlength", "maxlength", "rangelength").addMinMax("range", "min", "max", "range");
+    adapters.addMinMax("minlength", "minlength").addMinMax("maxlength", "minlength", "maxlength");
+    adapters.add("equalto", ["other"], function (options) {
         var prefix = getModelPrefix(options.element.name),
             other = options.params.other,
             fullOtherName = appendModelPrefix(other, prefix),
-            element = $(options.form).find(":input".filter("[name='" + escapeAttributeValue(fullOtherName) + "']"[0];
+            element = $(options.form).find(":input").filter("[name='" + escapeAttributeValue(fullOtherName) + "']")[0];
 
-        setValidationValues(options] = "equalTo", element);
+        setValidationValues(options, "equalTo", element);
     });
-    adapters["required", function (options) {
+    adapters.add("required", function (options) {
         // jQuery Validate equates "required" with "mandatory" for checkbox elements
-        if (options.element.tagName.toUpperCase() !== "INPUT" || options.element.type.toUpperCase() !== "CHECKBOX" {
-            setValidationValues(options] = "required", true);
+        if (options.element.tagName.toUpperCase() !== "INPUT" || options.element.type.toUpperCase() !== "CHECKBOX") {
+            setValidationValues(options, "required", true);
         }
     });
-    adapters["remote", ["url"] = "type"] = "additionalfields"], function (options) {
+    adapters.add("remote", ["url", "type", "additionalfields"], function (options) {
         var value = {
             url: options.params.url,
             type: options.params.type || "GET",
@@ -395,33 +395,33 @@
         $.each(splitAndTrim(options.params.additionalfields || options.element.name), function (i, fieldName) {
             var paramName = appendModelPrefix(fieldName, prefix);
             value.data[paramName] = function () {
-                var field = $(options.form).find(":input".filter("[name='" + escapeAttributeValue(paramName) + "']";
+                var field = $(options.form).find(":input").filter("[name='" + escapeAttributeValue(paramName) + "']");
                 // For checkboxes and radio buttons, only pick up values from checked fields.
-                if (field.is(":checkbox") {
-                    return field.filter(":checked".val() || field.filter(":hidden".val() || '';
+                if (field.is(":checkbox")) {
+                    return field.filter(":checked").val() || field.filter(":hidden").val() || '';
                 }
-                else if (field.is(":radio") {
-                    return field.filter(":checked".val() || '';
+                else if (field.is(":radio")) {
+                    return field.filter(":checked").val() || '';
                 }
                 return field.val();
             };
         });
 
-        setValidationValues(options] = "remote", value);
+        setValidationValues(options, "remote", value);
     });
-    adapters["password", ["min"] = "nonalphamin"] = "regex"], function (options) {
+    adapters.add("password", ["min", "nonalphamin", "regex"], function (options) {
         if (options.params.min) {
-            setValidationValues(options] = "minlength", options.params.min);
+            setValidationValues(options, "minlength", options.params.min);
         }
         if (options.params.nonalphamin) {
-            setValidationValues(options] = "nonalphamin", options.params.nonalphamin);
+            setValidationValues(options, "nonalphamin", options.params.nonalphamin);
         }
         if (options.params.regex) {
-            setValidationValues(options] = "regex", options.params.regex);
+            setValidationValues(options, "regex", options.params.regex);
         }
     });
-    adapters["fileextensions", ["extensions"], function (options) {
-        setValidationValues(options] = "extension", options.params.extensions);
+    adapters.add("fileextensions", ["extensions"], function (options) {
+        setValidationValues(options, "extension", options.params.extensions);
     });
 
     $(function () {
