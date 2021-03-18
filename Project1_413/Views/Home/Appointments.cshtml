@@ -11,25 +11,42 @@
 
 <div>
     <h2>List of Appointments</h2>
-    <div class="row">
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Appointment ID</th>
+                    <th>Date</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Group Name</th>
+                    <th>Group Size</th>
+                    <th>Email Address</th>
+                    <th>Phone Number</th>
+                </tr>
+            </thead>
 
-        @foreach (var day in days)
-        {
-        <div class="col-2">
-            <h3>@day</h3>
+            <tbody>
 
-            @foreach (Project1_413.Models.Appointment x in Model)
+           
+              @foreach (Project1_413.Models.Appointment x in Model)
             {
-                <ul>@x.AppointmentID</ul>
-                <ul>@x.Date</ul>
-                <ul>@x.StartTime</ul>
-                <ul>@x.EndTime</ul>
-                <ul>@x.GroupName</ul>
-                <ul>@x.GroupSize</ul>
-                <ul>@x.EmailAddress</ul>
-                <ul>@x.PhoneNumber</ul>}
+                <tr>
+
+
+                    <td>@x.AppointmentID</td>
+                    <td>@x.Date</td>
+                    <td>@x.StartTime</td>
+                    <td>@x.EndTime</td>
+                    <td>@x.GroupName</td>
+                    <td>@x.GroupSize</td>
+                    <td>@x.EmailAddress</td>
+                    <td>@x.PhoneNumber</td>
+                </tr>
             }
-        </div>
-        }
+
+            </tbody>
+        </table>
+
     </div>
 </div>
