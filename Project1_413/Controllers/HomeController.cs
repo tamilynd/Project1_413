@@ -34,10 +34,17 @@ namespace Project1_413.Controllers
 
 
         [HttpPost]
-        public IActionResult SignUp(SignUpFormViewModel form)
+        public IActionResult SignUp(string StartTime, string EndTime, string Day)
         {
+            ViewBag.StartTime = StartTime;
+            ViewBag.EndTime = EndTime;
+            ViewBag.Day = Day;
 
-            return View("SignUpForm", form);
+            System.Diagnostics.Debug.WriteLine(StartTime);
+            System.Diagnostics.Debug.WriteLine("This works");
+
+
+            return View("SignUpForm");
         }
 
 
@@ -53,7 +60,7 @@ namespace Project1_413.Controllers
 
         public IActionResult ViewAppointments()
         {
-            return View(_repository.Appointments);
+            return View(context.Appointments);
         }
 
         public IActionResult Privacy()

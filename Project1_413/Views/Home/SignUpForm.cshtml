@@ -1,19 +1,18 @@
-﻿@model SignUpFormViewModel;
+﻿@model Appointment;
 <!--Tam's View-->
 
 <div>
     <h2>Group Info</h2>
     <div>
-        <form asp-action="SignUpForm" method="post">
-
+        <form asp-action="SubmitForm" method="post">
             <!--Part of form not to be edited-->
             <h5>Reservation Information</h5>
             <label asp-for="Date">Day of the Week</label>
-            <input asp-for="Date" disabled value="@Model.Day" />
+            <input asp-for="Date" disabled value="@ViewBag.Day" placeholder="@ViewBag.Day"/>
             <label asp-for="StartTime">Start Time</label>
-            <input asp-for="StartTime" disabled value="@Model.StartTime" />
+            <input asp-for="StartTime" disabled value="@ViewBag.StartTime" />
             <label asp-for="EndTime">Finish Time</label>
-            <input asp-for="EndTime" disabled value="@Model.EndTime" />
+            <input asp-for="EndTime" disabled value="@ViewBag.EndTime" />
             <br />
 
 

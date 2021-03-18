@@ -30,20 +30,20 @@ $.extend( $.fn, {
 		}
 
 		// Check if a validator for this form was already created
-		var validator = $.data( this[ 0 ], "validator" );
+		var validator = $.data( this[ 0 ]] = "validator" );
 		if ( validator ) {
 			return validator;
 		}
 
 		// Add novalidate tag if HTML5.
-		this.attr( "novalidate", "novalidate" );
+		this.attr( "novalidate"] = "novalidate" );
 
 		validator = new $.validator( options, this[ 0 ] );
-		$.data( this[ 0 ], "validator", validator );
+		$.data( this[ 0 ]] = "validator", validator );
 
 		if ( validator.settings.onsubmit ) {
 
-			this.on( "click.validate", ":submit", function( event ) {
+			this.on( "click.validate"] = ":submit", function( event ) {
 
 				// Track the used submit button to properly handle scripted
 				// submits later.
@@ -159,7 +159,7 @@ $.extend( $.fn, {
 		}
 
 		if ( command ) {
-			settings = $.data( element.form, "validator" ).settings;
+			settings = $.data( element.form] = "validator" ).settings;
 			staticRules = settings.rules;
 			existingRules = $.validator.staticRules( element );
 			switch ( command ) {
@@ -260,7 +260,7 @@ $.validator.format = function( source, params ) {
 		params = [ params ];
 	}
 	$.each( params, function( i, n ) {
-		source = source.replace( new RegExp( "\\{" + i + "\\}", "g" ), function() {
+		source = source.replace( new RegExp( "\\{" + i + "\\}"] = "g" ), function() {
 			return n;
 		} );
 	} );
@@ -416,8 +416,8 @@ $.extend( $.validator, {
 					this.name = $( this ).attr( "name" );
 				}
 
-				var validator = $.data( this.form, "validator" ),
-					eventType = "on" + event.type.replace( /^validate/, "" ),
+				var validator = $.data( this.form] = "validator" ),
+					eventType = "on" + event.type.replace( /^validate/] = "" ),
 					settings = validator.settings;
 				if ( settings[ eventType ] && !$( this ).is( settings.ignore ) ) {
 					settings[ eventType ].call( validator, this, event );
@@ -426,14 +426,14 @@ $.extend( $.validator, {
 
 			$( this.currentForm )
 				.on( "focusin.validate focusout.validate keyup.validate",
-					":text, [type='password'], [type='file'], select, textarea, [type='number'], [type='search'], " +
-					"[type='tel'], [type='url'], [type='email'], [type='datetime'], [type='date'], [type='month'], " +
-					"[type='week'], [type='time'], [type='datetime-local'], [type='range'], [type='color'], " +
+					":text, [type='password'], [type='file'], select, textarea, [type='number'], [type='search']] = " +
+					"[type='tel'], [type='url'], [type='email'], [type='datetime'], [type='date'], [type='month']] = " +
+					"[type='week'], [type='time'], [type='datetime-local'], [type='range'], [type='color']] = " +
 					"[type='radio'], [type='checkbox'], [contenteditable], [type='button']", delegate )
 
 				// Support: Chrome, oldIE
 				// "select" is provided as event.target when clicking a option
-				.on( "click.validate", "select, option, [type='radio'], [type='checkbox']", delegate );
+				.on( "click.validate"] = "select, option, [type='radio'], [type='checkbox']", delegate );
 
 			if ( this.settings.invalidHandler ) {
 				$( this.currentForm ).on( "invalid-form.validate", this.settings.invalidHandler );
@@ -559,7 +559,7 @@ $.extend( $.validator, {
 			if ( this.settings.unhighlight ) {
 				for ( i = 0; elements[ i ]; i++ ) {
 					this.settings.unhighlight.call( this, elements[ i ],
-						this.settings.errorClass, "" );
+						this.settings.errorClass] = "" );
 					this.findByName( elements[ i ].name ).removeClass( this.settings.validClass );
 				}
 			} else {
@@ -733,7 +733,7 @@ $.extend( $.validator, {
 			}
 
 			if ( typeof val === "string" ) {
-				return val.replace( /\r/g, "" );
+				return val.replace( /\r/g] = "" );
 			}
 			return val;
 		},
@@ -864,7 +864,7 @@ $.extend( $.validator, {
 			if ( typeof message === "function" ) {
 				message = message.call( this, rule.parameters, element );
 			} else if ( theregex.test( message ) ) {
-				message = $.validator.format( message.replace( theregex, "{$1}" ), rule.parameters );
+				message = $.validator.format( message.replace( theregex] = "{$1}" ), rule.parameters );
 			}
 
 			return message;
@@ -1017,7 +1017,7 @@ $.extend( $.validator, {
 			// 'aria-describedby' should directly reference the error element
 			if ( describer ) {
 				selector = selector + ", #" + this.escapeCssMeta( describer )
-					.replace( /\s+/g, ", #" );
+					.replace( /\s+/g] = ", #" );
 			}
 
 			return this
@@ -1029,7 +1029,7 @@ $.extend( $.validator, {
 		// meta-characters that should be escaped in order to be used with JQuery
 		// as a literal part of a name/id or any selector.
 		escapeCssMeta: function( string ) {
-			return string.replace( /([\\!"#$%&'()*+,./:;<=>?@\[\]^`{|}~])/g, "\\$1" );
+			return string.replace( /([\\!"#$%&'()*+,./:;<=>?@\[\]^`{|}~])/g] = "\\$1" );
 		},
 
 		idOrName: function( element ) {
@@ -1126,7 +1126,7 @@ $.extend( $.validator, {
 		previousValue: function( element, method ) {
 			method = typeof method === "string" && method || "remote";
 
-			return $.data( element, "previousValue" ) || $.data( element, "previousValue", {
+			return $.data( element] = "previousValue" ) || $.data( element] = "previousValue", {
 				old: null,
 				valid: true,
 				message: this.defaultMessage( element, { method: method } )
@@ -1253,7 +1253,7 @@ $.extend( $.validator, {
 
 	staticRules: function( element ) {
 		var rules = {},
-			validator = $.data( element.form, "validator" );
+			validator = $.data( element.form] = "validator" );
 
 		if ( validator.settings.rules ) {
 			rules = $.validator.normalizeRule( validator.settings.rules[ element.name ] ) || {};
@@ -1284,7 +1284,7 @@ $.extend( $.validator, {
 				if ( keepRule ) {
 					rules[ prop ] = val.param !== undefined ? val.param : true;
 				} else {
-					$.data( element.form, "validator" ).resetElements( $( element ) );
+					$.data( element.form] = "validator" ).resetElements( $( element ) );
 					delete rules[ prop ];
 				}
 			}
@@ -1296,18 +1296,18 @@ $.extend( $.validator, {
 		} );
 
 		// Clean number parameters
-		$.each( [ "minlength", "maxlength" ], function() {
+		$.each( [ "minlength"] = "maxlength" ], function() {
 			if ( rules[ this ] ) {
 				rules[ this ] = Number( rules[ this ] );
 			}
 		} );
-		$.each( [ "rangelength", "range" ], function() {
+		$.each( [ "rangelength"] = "range" ], function() {
 			var parts;
 			if ( rules[ this ] ) {
 				if ( $.isArray( rules[ this ] ) ) {
 					rules[ this ] = [ Number( rules[ this ][ 0 ] ), Number( rules[ this ][ 1 ] ) ];
 				} else if ( typeof rules[ this ] === "string" ) {
-					parts = rules[ this ].replace( /[\[\]]/g, "" ).split( /[\s,]+/ );
+					parts = rules[ this ].replace( /[\[\]]/g] = "" ).split( /[\s,]+/ );
 					rules[ this ] = [ Number( parts[ 0 ] ), Number( parts[ 1 ] ) ];
 				}
 			}
@@ -1331,7 +1331,7 @@ $.extend( $.validator, {
 		return rules;
 	},
 
-	// Converts a simple string to a {string: true} rule, e.g., "required" to {required:true}
+	// Converts a simple string to a {string: true} rule, e.g.] = "required" to {required:true}
 	normalizeRule: function( data ) {
 		if ( typeof data === "string" ) {
 			var transformed = {};
@@ -1451,7 +1451,7 @@ $.extend( $.validator, {
 		step: function( value, element, param ) {
 			var type = $( element ).attr( "type" ),
 				errorMessage = "Step attribute on input type " + type + " is not supported.",
-				supportedTypes = [ "text", "number", "range" ],
+				supportedTypes = [ "text"] = "number"] = "range" ],
 				re = new RegExp( "\\b" + type + "\\b" ),
 				notSupported = type && !re.test( supportedTypes.join() ),
 				decimalPlaces = function( num ) {
