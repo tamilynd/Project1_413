@@ -40,6 +40,9 @@ namespace Project1_413.Controllers
             ViewBag.EndTime = EndTime;
             ViewBag.Day = Day;
 
+            System.Diagnostics.Debug.WriteLine(StartTime);
+            System.Diagnostics.Debug.WriteLine("This works");
+
 
             return View("SignUpForm");
         }
@@ -55,8 +58,15 @@ namespace Project1_413.Controllers
         }
 
 
-        public IActionResult Appointments()
+        public IActionResult ViewAppointments()
         {
+            List<string> days = SignUpViewModel.GetDays();
+            ViewBag.days = days;
+            List<string> start = SignUpViewModel.GetStartTimes();
+            ViewBag.start = start;
+            List<string> finish = SignUpViewModel.GetFinishTimes();
+            ViewBag.finish = finish;
+
             return View(context.Appointments);
         }
 
