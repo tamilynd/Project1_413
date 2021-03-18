@@ -60,6 +60,13 @@ namespace Project1_413.Controllers
 
         public IActionResult ViewAppointments()
         {
+            List<string> days = SignUpViewModel.GetDays();
+            ViewBag.days = days;
+            List<string> start = SignUpViewModel.GetStartTimes();
+            ViewBag.start = start;
+            List<string> finish = SignUpViewModel.GetFinishTimes();
+            ViewBag.finish = finish;
+
             return View(context.Appointments);
         }
 
