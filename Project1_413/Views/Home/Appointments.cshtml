@@ -1,0 +1,35 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{ }
+
+@model IEnumerable<Project1_413.Models.Appointment>
+
+@{ List<string> days = SignUpViewModel.GetDays();
+                List<string> start = SignUpViewModel.GetStartTimes();
+                List<string> finish = SignUpViewModel.GetFinishTimes(); }
+
+<div>
+    <h2>List of Appointments</h2>
+    <div class="row">
+
+        @foreach (var day in days)
+        {
+        <div class="col-2">
+            <h3>@day</h3>
+
+            @foreach (Project1_413.Models.Appointment x in Model)
+            {
+                <ul>@x.AppointmentID</ul>
+                <ul>@x.Date</ul>
+                <ul>@x.StartTime</ul>
+                <ul>@x.EndTime</ul>
+                <ul>@x.GroupName</ul>
+                <ul>@x.GroupSize</ul>
+                <ul>@x.EmailAddress</ul>
+                <ul>@x.PhoneNumber</ul>}
+            }
+        </div>
+        }
+    </div>
+</div>

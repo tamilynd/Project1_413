@@ -40,9 +40,6 @@ namespace Project1_413.Controllers
             ViewBag.EndTime = EndTime;
             ViewBag.Day = Day;
 
-            System.Diagnostics.Debug.WriteLine(StartTime);
-            System.Diagnostics.Debug.WriteLine("This works");
-
 
             return View("SignUpForm");
         }
@@ -58,7 +55,7 @@ namespace Project1_413.Controllers
         }
 
 
-        public IActionResult ViewAppointments()
+        public IActionResult Appointments()
         {
             return View(context.Appointments);
         }

@@ -1,6 +1,11 @@
 ﻿@model Appointment;
 <!--Tam's View-->
+@{ 
+    string day = ViewBag.Day;
+    string start = ViewBag.StartTime;
+    string end = ViewBag.EndTime;
 
+}
 <div>
     <h2>Group Info</h2>
     <div>
@@ -8,11 +13,11 @@
             <!--Part of form not to be edited-->
             <h5>Reservation Information</h5>
             <label asp-for="Date">Day of the Week</label>
-            <input asp-for="Date" disabled value="@ViewBag.Day" placeholder="@ViewBag.Day" />
+            <input asp-for="Date" disabled value="@day" />
             <label asp-for="StartTime">Start Time</label>
-            <input asp-for="StartTime" disabled value="@ViewBag.StartTime" />
+            <input asp-for="StartTime" disabled value="@start" />
             <label asp-for="EndTime">Finish Time</label>
-            <input asp-for="EndTime" disabled value="@ViewBag.EndTime" />
+            <input asp-for="EndTime" disabled value="@end" />
             <br />
 
 
