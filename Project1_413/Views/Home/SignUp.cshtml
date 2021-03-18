@@ -12,43 +12,42 @@
 
 <div>
     <h2>Select a Time Slot:</h2>
-    <div class="row">
-
-        @foreach (var day in days)
-        {
-            <div class="col-2">
-                <h3>@day</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <td>Start Time</td>
-                            <td>End Time</td>
-                            <td></td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @for (int i = 0; i < start.Count; i++)
-                        {
-                            <tr>
-                                <td>
-                                    @start[i]
-                                </td>
-                                <td>
-                                    @finish[i]
-                                </td>
-                                <td>
-                                    <form method="post">
-                                        <input hidden type="text" value="@start[i]" id="StartTime" name="StartTime" />
-                                        <input hidden value="@finish[i]" id="EndTime" name="EndTime" />
-                                        <input hidden value="@day" id="Day" name="Day" />
-                                        <button type="submit">Reserve</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-        }
-    </div>
+        <table class="table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="d-md-table-cell">Day</th>
+                    <th class="d-md-table-cell">Start Time</th>
+                    <th class="d-md-table-cell">End Time</th>
+                    <th class="d-md-table-cell"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var day in days)
+                {
+                    @for (int i = 0; i < start.Count; i++)
+                    {
+                    <tr>
+                        <td>
+                            @day 
+                        </td>
+                        <td>
+                            @start[i]
+                        </td>
+                        <td>
+                            @finish[i]     
+                        </td>
+                        <td>
+                            <form method="post">
+                                <input hidden type="text" value="@start[i]" id="StartTime" name="StartTime" />
+                                <input hidden value="@finish[i]" id="EndTime" name="EndTime" />
+                                <input hidden value="@day" id="Day" name="Day" />
+                                <button class="shadow" type="submit">Reserve</button>
+                            </form>
+                        </td>
+                    </tr>
+                    }
+                }
+                </tbody>
+        </table>
+       
 </div>
