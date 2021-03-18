@@ -8,6 +8,9 @@ namespace Project1_413.Models
 {
     public class Appointment
     {
+        
+        [Key]
+        public int AppointmentID {get; set;}
         [Required]
         public string Date { get; set; }
         [Required]
