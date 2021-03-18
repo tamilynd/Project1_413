@@ -58,7 +58,7 @@ namespace Project1_413.Controllers
         }
 
 
-        public IActionResult ViewAppointments()
+        public IActionResult Appointments()
         {
             List<string> days = SignUpViewModel.GetDays();
             ViewBag.days = days;
